@@ -1,0 +1,21 @@
+{
+  "version": 2,
+  "dgSpecHash": "Q7iA1CmsS9y2YHdbVQYjr3UMO8ZuINXZ8xfgB3SVA6JJ6XeGyjWwoEfuOB74I/xlFr0+bUdu87Da4E8UXnlOqA==",
+  "success": false,
+  "projectFilePath": "D:\\Desktop\\Blazor course\\webAssembly_coreHosted\\Client\\webAssembly_coreHosted.Client.csproj",
+  "expectedPackageFiles": [],
+  "logs": [
+    {
+      "code": "NU1301",
+      "level": "Error",
+      "message": "Unable to load the service index for source https://api.nuget.org/v3/index.json.",
+      "libraryId": "Microsoft.AspNetCore.Components.WebAssembly"
+    },
+    {
+      "code": "NU1301",
+      "level": "Error",
+      "message": "Unable to load the service index for source https://api.nuget.org/v3/index.json.",
+      "libraryId": "Microsoft.AspNetCore.Components.WebAssembly.DevServer"
+    }
+  ]
+}
