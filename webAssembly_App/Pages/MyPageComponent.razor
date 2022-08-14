@@ -1,0 +1,25 @@
+﻿@* {Id:int} is constraint to make URL bar consider Id as int. and not as a string *@
+
+@page "/mpc/{Title}/{Id:int}"
+@page "/mpc"
+
+<h3>MyPageComponent</h3>
+<p style="color:green">@Title</p>
+
+<p style="color:green">@Id</p>
+
+@code{
+       [Parameter]
+       public string Title { get; set; }
+       
+       [Parameter]
+       public int? Id { get; set; }
+       
+        protected override void OnInitialized()
+        {
+            base.OnInitialized();
+
+        Title = Title ?? "default Title";
+        Id = Id ?? 1; //if Id = null, set Id=1
+        }
+}
