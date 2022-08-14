@@ -1,0 +1,121 @@
+1. WEB SERVER
+signalR establish connection b/w client and server
+
+2. web assembly app
+
+if In web assembly/ client app, you don't see a SIGNALR WEBSOCKET connection: Do this:
+Go to network, refresh the application by pressing CTRL+F5
+If it doesn't work:
+Go to Application, click "clear the site data" button
+
+Goal: several .dll files downloaded by "fetch" type
+
+Why these ddl's downloaded?
+bcz everything is processed on client end (in weB ASSEMBLy) so these dll's are required
+
+
+3. web assembly app with option of asp.net core hosted
+make a blazor web assembly app project --> Select > ASP.NET Core hosted
+
+There are 3 projects in this blazor project template
+
+1. webAssembly_coreHosted.Client => Client --> contains components such as index, fetch data etc
+2. webAssembly_coreHosted.Server => Server --> controllers or API controllers such as weather forecast controller
+3. webAssembly_coreHosted.Shared => Shared --> contains classes which are shared b/w client and controllers such as weather forecast
+
+Note:
+ In fetch data we are not getting data from a file but from the API controller inside the server project
+
+HOW WE CAN RUN C# CODE IN WEB BROWSER EXPLANATION:
+(Refering to network tab)
+
+-> This project template also downloads dll's bcz client-side processing will be done at the client end
+
+  dotnet.wasm -> this is web assembly based dotnet runtime
+-> All these dll are downloaded by blazor.web.assembly.js, this is the script responsible for downloading and 
+setting up client app at the client end
+
+NOTE:
+	when we refresh the page, see that on network tab, dll's are not downloaded for the 2nd time bcz it already
+have been downloaded in the 1st request. when u send request for 1st time, it downloads runtime along wtith  assemblies
+And for the subsequent request, it will get it from the client machine
+
+
+	----------------------------
+
+
+STRUCTURE OF DEFAULT APP of "BLAZOR WEB ASSEMBLY":
+
+- Execution starts from Program.cs "main" function
+
+- builder.RootComponents.Add<App>("#app");
+ // application added a root component named as "App" ( <App> ) and this component is aded in 
+a div with id "app"
+
+- Where is this div with Id=app located?
+-> wwwroot > index.html
+
+- Note: 
+ index.html is the 1st page loaded in client browser as a result of requset
+
+- The script linked in index.html i.e "blazor.webassembly.js" is responsble to load:
+1.  dotnet runtime
+2. application assembly and its dependencies
+
+
+=> APP COMPONENT:
+
+- Function
+1. Install the Router, which is responsible for loading blazor component depending on URL
+
+-Sections:
+ 1. Found -> executes when route is found
+ 2. Not found  -> executes when route is not found
+
+By default => Inside MainLayout.razor, file loaded at place of @Body is: Index.razor
+bcz this file contains "/". Hence the file that contains "/" in page directive is loaded by default
+
+If you want to make COunter component as default one when app loaded, add "/" to page directive
+
+NOTE:
+	If you add "/" in page directive in 2 diff page components, it will cause error
+
+---------------
+
+STRUCTURE OF RAZOR PAGE:
+
+1. Directive => page directive for routing
+2. Markup => html
+3. Logic => c# code instead of js
+
+Binding b/w c# code and html is done by using @
+
+
+Q- How c# updates DOM?
+see img "how c# updates dom"
+
+
+-----------------------------------
+COMPONENTS:
+
+Pages > add > new item > razor component
+
+Components having page directive are called page Components thats why we save them in page folder
+
+If we want to create a Component without page directive, we have to add it in a separate folder. eg. Controls folder
+Q- where will we use them if they have no page directive? They are used as child Component.
+
+When we add child component, it uses the project name with it, such as => <App1.child> </App1.child>
+To avoid this project name here, add namespace in _Imports.razor
+
+@using App1.Controls
+
+Now access child Components with its name only
+
+
+ 
+
+
+
+
+
