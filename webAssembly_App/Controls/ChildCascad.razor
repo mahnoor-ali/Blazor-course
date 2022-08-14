@@ -1,0 +1,19 @@
+﻿<div style="background-color:red">
+
+<h3>Child of Cascading params</h3>
+<ChildCascad></ChildCascad>
+    <p> @MyMessage</p>
+    <p> @MyAge</p>
+    <p> @MyName</p>
+</div>
+
+    @code {
+        [CascadingParameter(Name ="msg")]
+        public string MyMessage { get; set; }
+
+        [CascadingParameter(Name ="aage")]
+        public int MyAge { get; set; }
+
+        [CascadingParameter(Name ="name")]
+        public string MyName { get; set; }
+    }

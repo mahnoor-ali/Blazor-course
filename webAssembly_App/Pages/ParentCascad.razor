@@ -1,0 +1,19 @@
+﻿@page "/pc"
+    <div style="background-color:green">
+<h3>Parent of Cascading params</h3>
+  <!--if we send more than one cascading parameter having same data type, the blazor will not differentiate
+them by default as it uses data type to differ parameters.
+To avoid this, we use "Name" property.-->
+        <CascadingValue Name="msg" Value="@Message">
+            <CascadingValue Name="age" Value="@Age">
+                <CascadingValue Name="name" Value="@Name">
+                    <ChildCascad></ChildCascad>
+                </CascadingValue>
+            </CascadingValue>
+            </CascadingValue>
+</div>
+    @code {
+        public string Message { get; set; } = "I am from Parent";
+        public int Age { get; set; } = 96;
+        public string Name { get; set; } = "Ibrahim";
+    }

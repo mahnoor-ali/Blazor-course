@@ -109,8 +109,33 @@ When we add child component, it uses the project name with it, such as => <App1.
 To avoid this project name here, add namespace in _Imports.razor
 
 @using App1.Controls
-
 Now access child Components with its name only
+
+-------------
+
+CASCADING PARAMETERS
+
+	"Are used to pass data from ancestor component to descendant components"
+	Parent component -> child component -> grand child component 
+
+<CascadingValue> 
+  <ChildComp> </ChildComp>
+</CascadingValue> 
+
+PROBLEM:
+	if we send more than one cascading parameter having same data type, the blazor will not differentiate
+them by default as it uses data type to differ parameters.
+To avoid this, we use "Name" property.
+Add Name property in parent and descendant components that use it.. see code for ex.
+
+All these cascading values are active by default
+If a cascading value is changed then a new value is sent down to component tree. and all components that use 
+cascading values are updated. Blazor has to continuosly keep a watch on it. So This takes up resource and in
+a large app, could end up causing performance issues.
+So, if u gonna use a cascading value, it would be nice to tell blazor to NOT keep a watch on it
+And for that purpose we can add a "isFixed" parameter in cascading value
+- Default value of isFixed is false. So set it to true.
+
 
 
  

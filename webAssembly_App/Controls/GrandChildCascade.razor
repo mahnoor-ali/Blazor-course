@@ -1,0 +1,8 @@
+﻿<div style="background-color:yellow">
+<h3>GrandChild of Cascading params</h3>
+    <p>@MyMessage</p>
+</div>
+@code {
+    [CascadingParameter]
+    public string MyMessage { get; set; }
+}
